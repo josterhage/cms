@@ -1,18 +1,40 @@
 package com.system559.cms.model;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.util.List;
 
+/**
+ *
+ * A set of users with permission to use the CMS
+ *
+ * @author James Osterhage
+ * @version 0.1
+ * @since 0.1
+ */
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 public class Team implements TeamMember{
+    /**
+     * A unique identifier
+     */
+    private String teamMemberId;
+    /**
+     * The User who manages this team
+     */
     private User teamLeader;
-    private String teamName;
+    /**
+     * This team's name.
+     */
+    private String name;
+    /**
+     * The members of this team.
+     */
     private List<TeamMember> members;
+
+    @Override
+    public String getTeamMemberId() {
+        return teamMemberId;
+    }
 
     @Override
     public List<TeamMember> getMembers() {
@@ -21,11 +43,6 @@ public class Team implements TeamMember{
 
     @Override
     public String getName() {
-        return teamName;
-    }
-
-    @Override
-    public String getType() {
-        return "team";
+        return name;
     }
 }

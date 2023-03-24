@@ -8,6 +8,7 @@ class ContentManagementSystemApplicationTests {
 
 	@Test
 	void contextLoads() {
+
 	}
 
 }
