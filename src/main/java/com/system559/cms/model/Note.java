@@ -1,56 +1,34 @@
 package com.system559.cms.model;
 
-import lombok.AccessLevel;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import java.util.List;
 
-import java.util.EnumSet;
-import java.util.Map;
-
-/**
- * A Viewable Rich-Text object
- *
- * @author James Osterhage
- * @version 0.1
- * @since 0.1
- */
-@Data
-public class Note implements Viewable{
-    /**
-     * Unique identifier for this note
-     */
-    private String viewId;
-    /**
-     * Permissions table for this note
-     */
-    @Getter(AccessLevel.NONE)
-    @Setter(AccessLevel.NONE)
-    private Map<User,EnumSet<PermissionType>> permissions;
-    /**
-     * Fully qualified name of this note
-     */
+public class Note extends ManagedObject {
     private String name;
-    /**
-     * Rich-text of this note
-     */
     private String text;
-    /**
-     * User who created this note. Creators have special permissions over notes.
-     */
-    private User creator;
 
-    @Override
-    public EnumSet<PermissionType> getPermissions(User user) {
-        return null;
+    public Note() {
+        super();
     }
 
-    @Override
-    public Map<User, EnumSet<PermissionType>> getAllPermissions() {
-        return null;
+    public Note(String id, List<User> managers, String name, String text) {
+        super(id, managers);
+        this.name = name;
+        this.text = text;
     }
-    @Override
-    public void setPermissions(User user, EnumSet<PermissionType> permissions) {
-        this.permissions.put(user,permissions);
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
     }
 }

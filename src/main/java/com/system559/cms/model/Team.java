@@ -1,48 +1,55 @@
 package com.system559.cms.model;
 
-import lombok.Data;
-
+import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
-/**
- *
- * A set of users with permission to use the CMS
- *
- * @author James Osterhage
- * @version 0.1
- * @since 0.1
- */
-@Data
-public class Team implements TeamMember{
-    /**
-     * A unique identifier
-     */
-    private String teamMemberId;
-    /**
-     * The User who manages this team
-     */
-    private User teamLeader;
-    /**
-     * This team's name.
-     */
+public class Team implements TeamMember {
+    private final String id;
     private String name;
-    /**
-     * The members of this team.
-     */
-    private List<TeamMember> members;
+    private final long teamCreated;
+    private final List<TeamMember> members;
+    private String avatar;
 
-    @Override
-    public String getTeamMemberId() {
-        return teamMemberId;
+    public Team() {
+        this.id = UUID.randomUUID().toString();
+        this.teamCreated = System.currentTimeMillis();
+        this.members = new ArrayList<>();
     }
 
-    @Override
+    public Team(String id, String name, long teamCreated, List<TeamMember> members, String avatar) {
+        this.id = id;
+        this.name = name;
+        this.teamCreated = teamCreated;
+        this.members = members;
+        this.avatar = avatar;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public long getTeamCreated() {
+        return teamCreated;
+    }
+
     public List<TeamMember> getMembers() {
         return members;
     }
 
-    @Override
-    public String getName() {
-        return name;
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 }

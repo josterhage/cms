@@ -1,52 +1,103 @@
 package com.system559.cms.model;
 
-import lombok.Data;
-
+import java.util.Collections;
+import java.util.EnumSet;
 import java.util.List;
+import java.util.UUID;
 
-/**
- *
- * A single person with permissions to use the CMS
- *
- * @author James Osterhage
- * @version 0.1
- * @since 0.1
- */
-@Data
-public class User implements TeamMember{
-    /**
-     * A unique identifier
-     */
-    private String teamMemberId;
-    /**
-     * The user's first name
-     */
+public class User implements TeamMember {
+    private final String id;
     private String firstName;
-    /**
-     * The user's last name
-     */
     private String lastName;
-    /**
-     * The user's middle name
-     */
     private String middleName;
-    /**
-     * The user's email address
-     */
     private String email;
+    private long birthdate;
+    private final long accountCreated;
+    private String avatar;
+    private boolean isPublicProfile;
 
-    @Override
-    public String getTeamMemberId() {
-        return teamMemberId;
+    public User() {
+        id = UUID.randomUUID().toString();
+        accountCreated = System.currentTimeMillis();
     }
 
-    @Override
+    public User(String id, String firstName, String lastName, String middleName, String email, long birthdate, long accountCreated, String avatar, boolean isPublicProfile) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.middleName = middleName;
+        this.email = email;
+        this.birthdate = birthdate;
+        this.accountCreated = accountCreated;
+        this.avatar = avatar;
+        this.isPublicProfile = isPublicProfile;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getMiddleName() {
+        return middleName;
+    }
+
+    public void setMiddleName(String middleName) {
+        this.middleName = middleName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public long getBirthdate() {
+        return birthdate;
+    }
+
+    public void setBirthdate(long birthdate) {
+        this.birthdate = birthdate;
+    }
+
+    public long getAccountCreated() {
+        return accountCreated;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
+    public boolean isPublicProfile() {
+        return isPublicProfile;
+    }
+
+    public void setPublicProfile(boolean isPublicProfile) {
+        this.isPublicProfile = isPublicProfile;
+    }
+
     public List<TeamMember> getMembers() {
-        return List.of(this);
-    }
-
-    @Override
-    public String getName() {
-        return String.format("%s %s %s",firstName,middleName,lastName);
+        return Collections.singletonList(this);
     }
 }
