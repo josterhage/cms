@@ -5,10 +5,13 @@ import org.springframework.data.annotation.Id;
 public class AccountLock {
     @Id
     private String userId;
-    private final long endTime;
+    private long endTime;
 
     //TODO: make LOCK_TIMEOUT configurable
     private final static long LOCK_TIMEOUT = 60 * 60 * 1000;
+
+    public AccountLock() {
+    }
 
     public AccountLock(String userID) {
         this.userId = userID;
