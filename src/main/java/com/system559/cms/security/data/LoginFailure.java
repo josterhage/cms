@@ -12,11 +12,13 @@ public class LoginFailure {
     private static final long FAILURE_TIMEOUT = 15 * 60 * 1000;
     private static final int MAX_FAILURES = 3;
 
+    public LoginFailure() {
+    }
+
     public LoginFailure(String userId) {
         this.userId = userId;
-        lastOccurrence = System.currentTimeMillis();
-        count = 1;
     }
+
 
     public LoginFailure(String userID, long lastOccurrence, long count) {
         this.userId = userID;
