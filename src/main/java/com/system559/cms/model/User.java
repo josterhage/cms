@@ -6,19 +6,17 @@ import java.util.List;
 import java.util.UUID;
 
 public class User implements TeamMember {
-    private final String id;
+    private String id;
     private String firstName;
     private String lastName;
     private String middleName;
     private String email;
     private long birthdate;
-    private final long accountCreated;
+    private long accountCreated;
     private String avatar;
     private boolean isPublicProfile;
 
     public User() {
-        id = UUID.randomUUID().toString();
-        accountCreated = System.currentTimeMillis();
     }
 
     public User(String id, String firstName, String lastName, String middleName, String email, long birthdate, long accountCreated, String avatar, boolean isPublicProfile) {
@@ -99,5 +97,21 @@ public class User implements TeamMember {
 
     public List<TeamMember> getMembers() {
         return Collections.singletonList(this);
+    }
+
+    public static User create(String firstName, String lastName, String middleName, String email, long birthdate, String avatar, boolean isPublicProfile) {
+        User newUser = new User();
+
+        newUser.id=UUID.randomUUID().toString();
+        newUser.firstName=firstName;
+        newUser.lastName=lastName;
+        newUser.middleName=middleName;
+        newUser.email=email;
+        newUser.birthdate=birthdate;
+        newUser.accountCreated=System.currentTimeMillis();
+        newUser.avatar=avatar;
+        newUser.isPublicProfile=isPublicProfile;
+
+        return newUser;
     }
 }
