@@ -33,7 +33,7 @@ public class UsernamePasswordAuthenticationProviderTests {
     private final String INVALID_USERNAME = "bad_user";
     private final String INVALID_PASSWORD = "bad_password";
     private final UsernamePasswordCredential testCredential =
-            new UsernamePasswordCredential(USER_ID,VALID_USERNAME,VALID_CT_PASSWORD);
+            new UsernamePasswordCredential(USER_ID, VALID_USERNAME, VALID_CT_PASSWORD);
     private final Authentication INVALID_USERNAME_AUTHENTICATION =
             UsernamePasswordAuthenticationToken.unauthenticated(INVALID_USERNAME, INVALID_PASSWORD);
     private final Authentication INVALID_PASSWORD_AUTHENTICATION =
@@ -84,10 +84,10 @@ public class UsernamePasswordAuthenticationProviderTests {
 
     @Test
     public void threeInvalidPasswordAttemptsCauseLock() {
-        for(int i = 0; i <3; i++){
+        for (int i = 0; i < 3; i++) {
             try {
                 provider.authenticate(INVALID_PASSWORD_AUTHENTICATION);
-            } catch(Exception ex) {
+            } catch (Exception ex) {
                 System.out.println(i);
             }
         }
@@ -98,10 +98,10 @@ public class UsernamePasswordAuthenticationProviderTests {
 
     @Test
     public void lockedAccountAuthenticationAttemptThrowsException() {
-        for(int i = 0; i < 3; i++) {
+        for (int i = 0; i < 3; i++) {
             try {
                 provider.authenticate(INVALID_PASSWORD_AUTHENTICATION);
-            } catch(Exception ex) {
+            } catch (Exception ex) {
                 System.out.println(i);
             }
         }
