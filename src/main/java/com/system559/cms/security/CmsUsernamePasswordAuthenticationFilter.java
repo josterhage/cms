@@ -4,18 +4,22 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.system559.cms.security.data.UsernamePasswordDto;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.stereotype.Component;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 
+@Component
 public class CmsUsernamePasswordAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
-
-    public CmsUsernamePasswordAuthenticationFilter(AuthenticationManager authenticationManager) {
-        super(authenticationManager);
+    @Autowired
+    public CmsUsernamePasswordAuthenticationFilter(AuthenticationProvider authenticationProvider) {
+        super(new ProviderManager(authenticationProvider));
     }
 
     @Override
