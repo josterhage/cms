@@ -19,12 +19,10 @@ import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.LockedException;
-import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.io.IOException;
-import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.*;
@@ -66,12 +64,10 @@ public class CmsUsernamePasswordAuthenticationFilterTests {
         setMaxStackTraceElementsDisplayed(1000);
 
         filter = new CmsUsernamePasswordAuthenticationFilter(
-                new ProviderManager(
-                        List.of(
                                 new UsernamePasswordAuthenticationProvider(
                                         accountLockRepository,
                                         usernamePasswordCredentialRepository,
-                                        loginFailureRepository))));
+                                        loginFailureRepository));
     }
 
     @After
