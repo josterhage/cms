@@ -1,6 +1,7 @@
 package com.system559.cms.model;
 
-import java.util.Collections;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.system559.cms.dto.UserDto;
 import java.util.List;
 import java.util.UUID;
 
@@ -94,8 +95,9 @@ public class User implements TeamMember {
         this.isPublicProfile = isPublicProfile;
     }
 
+    @JsonIgnore
     public List<TeamMember> getMembers() {
-        return Collections.singletonList(this);
+        return List.of();
     }
 
     public static User create(String firstName, String lastName, String middleName, String email, long birthdate, String avatar, boolean isPublicProfile) {
@@ -112,5 +114,9 @@ public class User implements TeamMember {
         newUser.isPublicProfile=isPublicProfile;
 
         return newUser;
+    }
+
+    public static User create(UserDto dto) {
+        return User.create(dto.getFirstName(),dto.getLastName(),dto.getMiddleName(),dto.getEmail(),dto.getBirthdate(),dto.getAvatar(),dto.isPublicProfile());
     }
 }
