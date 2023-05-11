@@ -5,9 +5,13 @@ import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 
 public class UsernamePasswordCredential {
     @Id
-    private final String userId;
+    private String userId;
     private String username;
     private String password;
+
+    public UsernamePasswordCredential() {
+
+    }
 
     public UsernamePasswordCredential(String userId, String username, String password) {
         this.userId = userId;
