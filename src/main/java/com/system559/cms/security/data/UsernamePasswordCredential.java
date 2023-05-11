@@ -1,6 +1,7 @@
 package com.system559.cms.security.data;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 
 public class UsernamePasswordCredential {
     @Id
@@ -12,6 +13,13 @@ public class UsernamePasswordCredential {
         this.userId = userId;
         this.username = username;
         this.password = password;
+    }
+
+    public UsernamePasswordCredential(String userId,
+                                      UsernamePasswordDto dto) {
+        this.userId = userId;
+        this.username = dto.getUsername();
+        this.password = PasswordEncoderFactories.createDelegatingPasswordEncoder().encode(dto.getPassword());
     }
 
     public String getUserId() {
