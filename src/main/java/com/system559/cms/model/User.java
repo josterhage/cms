@@ -96,7 +96,7 @@ public class User implements TeamMember {
     }
 
     @JsonIgnore
-    public List<TeamMember> getMembers() {
+    public List<TeamMember> getTeamMembers() {
         return List.of();
     }
 
