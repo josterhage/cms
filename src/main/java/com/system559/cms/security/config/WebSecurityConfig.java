@@ -1,6 +1,6 @@
 package com.system559.cms.security.config;
 
-import com.system559.cms.security.service.UsernamePasswordAuthenticationProvider;
+import com.system559.cms.security.authentication.UsernamePasswordAuthenticationProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
