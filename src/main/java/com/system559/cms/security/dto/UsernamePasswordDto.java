@@ -1,4 +1,4 @@
-package com.system559.cms.security.data;
+package com.system559.cms.security.dto;
 
 public class UsernamePasswordDto {
     private String username;
