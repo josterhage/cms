@@ -1,22 +1,14 @@
 package com.system559.cms.model;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class TeamSpace extends ManagedObject {
     private String name;
 
-    private final List<ManagedObject> objects;
+    private List<ManagedObject> managedObjects;
 
     public TeamSpace() {
-        super();
-        this.objects = new ArrayList<>();
-    }
-
-    public TeamSpace(String id, List<User> managers, String name, List<ManagedObject> objects) {
-        super(id,managers);
-        this.name = name;
-        this.objects = objects;
     }
 
     public String getName() {
@@ -27,7 +19,16 @@ public class TeamSpace extends ManagedObject {
         this.name = name;
     }
 
-    public List<ManagedObject> getObjects() {
-        return objects;
+    public List<ManagedObject> getManagedObjects() {
+        return managedObjects;
+    }
+
+    public static TeamSpace createTeamSpace(List<String> managerIds, String name, List<ManagedObject> managedObjects) {
+        TeamSpace newTeamSpace = new TeamSpace();
+        newTeamSpace.id = UUID.randomUUID().toString();
+        newTeamSpace.managerIds = managerIds;
+        newTeamSpace.name = name;
+        newTeamSpace.managedObjects = managedObjects;
+        return newTeamSpace;
     }
 }
