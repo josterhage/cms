@@ -5,7 +5,7 @@ import com.system559.cms.security.data.UsernamePasswordCredential;
 import com.system559.cms.security.repository.AccountLockRepository;
 import com.system559.cms.security.repository.LoginFailureRepository;
 import com.system559.cms.security.repository.UsernamePasswordCredentialRepository;
-import com.system559.cms.security.service.UsernamePasswordAuthenticationProvider;
+import com.system559.cms.security.authentication.UsernamePasswordAuthenticationProvider;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
