@@ -2,6 +2,8 @@ package com.system559.cms.config;
 
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
+import com.mongodb.lang.NonNull;
+import com.mongodb.lang.NonNullApi;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
@@ -14,10 +16,12 @@ public class MongoConfig extends AbstractMongoClientConfiguration {
     private final Logger logger = LoggerFactory.getLogger(MongoConfig.class);
 
     @Override
+    @NonNull
     protected String getDatabaseName() {
         return DB_NAME;
     }
 
+    @NonNull
     public @Bean MongoClient mongoClient() {
         logger.info(String.format("MongoUri: %s ", System.getenv("cmsMongoUri")));
         return MongoClients.create(System.getenv("cmsMongoUri"));
