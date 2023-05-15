@@ -1,32 +1,24 @@
 package com.system559.cms.model;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 public abstract class ManagedObject implements IdentifiableObject {
-    protected final String id;
-    protected final List<User> managers;
-
-    public ManagedObject() {
-        this.id = UUID.randomUUID().toString();
-        this.managers = new ArrayList<>();
-    }
-
-    public ManagedObject(String id, List<User> managers) {
-        this.id = id;
-        this.managers = managers;
-    }
+    protected String id;
+    protected List<String> managerIds;
 
     public String getId() {
         return this.id;
     }
 
-    public List<User> getManagers() {
-        return managers;
+    public List<String> getManagerIds() {
+        return managerIds;
     }
 
     public boolean isManager(User user) {
-        return managers.contains(user);
+        return managerIds.contains(user.getId());
+    }
+
+    public boolean isManager(String userId) {
+        return managerIds.contains(userId);
     }
 }
