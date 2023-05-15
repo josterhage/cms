@@ -1,4 +1,4 @@
-package com.system559.cms.security.service;
+package com.system559.cms.security.authentication;
 
 import com.system559.cms.security.data.AccountLock;
 import com.system559.cms.security.data.LoginFailure;
