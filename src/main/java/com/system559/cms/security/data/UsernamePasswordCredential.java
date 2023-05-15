@@ -1,5 +1,6 @@
 package com.system559.cms.security.data;
 
+import com.system559.cms.security.dto.UsernamePasswordDto;
 import org.springframework.data.annotation.Id;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 
@@ -11,19 +12,6 @@ public class UsernamePasswordCredential {
 
     public UsernamePasswordCredential() {
 
-    }
-
-    public UsernamePasswordCredential(String userId, String username, String password) {
-        this.userId = userId;
-        this.username = username;
-        this.password = password;
-    }
-
-    public UsernamePasswordCredential(String userId,
-                                      UsernamePasswordDto dto) {
-        this.userId = userId;
-        this.username = dto.getUsername();
-        this.password = PasswordEncoderFactories.createDelegatingPasswordEncoder().encode(dto.getPassword());
     }
 
     public String getUserId() {
@@ -44,5 +32,17 @@ public class UsernamePasswordCredential {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public static UsernamePasswordCredential credential(String userId, String username, String password) {
+        UsernamePasswordCredential newCredential = new UsernamePasswordCredential();
+        newCredential.userId=userId;
+        newCredential.username=username;
+        newCredential.password=PasswordEncoderFactories.createDelegatingPasswordEncoder().encode(password);
+        return newCredential;
+    }
+
+    public static UsernamePasswordCredential credential(String userId, UsernamePasswordDto dto) {
+        return credential(userId,dto.getUsername(),dto.getPassword());
     }
 }
