@@ -1,22 +1,14 @@
 package com.system559.cms.model;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class NoteBoard extends ManagedObject {
     private String name;
 
-    private final List<ManagedObject> objects;
+    private List<ManagedObject> managedObjects;
 
     public NoteBoard() {
-        super();
-        this.objects = new ArrayList<>();
-    }
-
-    public NoteBoard(String id, List<User> managers, String name, List<ManagedObject> objects) {
-        super(id, managers);
-        this.name = name;
-        this.objects = objects;
     }
 
     public String getName() {
@@ -28,6 +20,15 @@ public class NoteBoard extends ManagedObject {
     }
 
     public List<ManagedObject> getObjects() {
-        return objects;
+        return managedObjects;
+    }
+
+    public static NoteBoard createNoteBoard(List<String> managerIds, String name, List<ManagedObject> managedObjects) {
+        NoteBoard newNoteBoard = new NoteBoard();
+        newNoteBoard.id = UUID.randomUUID().toString();
+        newNoteBoard.managerIds = managerIds;
+        newNoteBoard.name = name;
+        newNoteBoard.managedObjects = managedObjects;
+        return  newNoteBoard;
     }
 }
