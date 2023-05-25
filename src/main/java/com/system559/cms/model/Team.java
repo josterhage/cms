@@ -7,6 +7,7 @@ public class Team implements TeamMember {
     private String id;
     private String name;
     private long timeCreated;
+    private User teamLeader;
     private List<TeamMember> teamMembers;
     private String avatar;
 
@@ -15,6 +16,10 @@ public class Team implements TeamMember {
 
     public String getId() {
         return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -29,8 +34,24 @@ public class Team implements TeamMember {
         return timeCreated;
     }
 
+    public void setTimeCreates(long timeCreated) {
+        this.timeCreated = timeCreated;
+    }
+
+    public User getTeamLeader() {
+        return teamLeader;
+    }
+
+    public void setTeamLeader(User teamLeader) {
+        this.teamLeader = teamLeader;
+    }
+
     public List<TeamMember> getTeamMembers() {
         return teamMembers;
+    }
+
+    public void setTeamMembers(List<TeamMember> teamMembers) {
+        this.teamMembers = teamMembers;
     }
 
     public String getAvatar() {
@@ -39,15 +60,5 @@ public class Team implements TeamMember {
 
     public void setAvatar(String avatar) {
         this.avatar = avatar;
-    }
-
-    public static Team createTeam(String name, List<TeamMember> teamMembers, String avatar) {
-        Team newTeam = new Team();
-        newTeam.id = UUID.randomUUID().toString();
-        newTeam.name = name;
-        newTeam.timeCreated = System.currentTimeMillis();
-        newTeam.teamMembers = teamMembers;
-        newTeam.avatar = avatar;
-        return newTeam;
     }
 }
