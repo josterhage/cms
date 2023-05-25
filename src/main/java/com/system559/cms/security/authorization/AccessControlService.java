@@ -2,7 +2,7 @@ package com.system559.cms.security.authorization;
 
 import com.system559.cms.security.data.AccessControlList;
 import com.system559.cms.security.data.Permission;
-import com.system559.cms.security.repository.AccessControlEntryRepository;
+import com.system559.cms.security.repository.AccessControlListRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,10 +11,10 @@ import java.util.Optional;
 
 @Service
 public class AccessControlService {
-    private final AccessControlEntryRepository repository;
+    private final AccessControlListRepository repository;
 
     @Autowired
-    public AccessControlService(AccessControlEntryRepository repository) {
+    public AccessControlService(AccessControlListRepository repository) {
         this.repository = repository;
     }
     //TODO: implement meaningful exception classes

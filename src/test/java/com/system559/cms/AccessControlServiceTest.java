@@ -2,7 +2,7 @@ package com.system559.cms;
 
 import com.system559.cms.security.data.AccessControlList;
 import com.system559.cms.security.data.Permission;
-import com.system559.cms.security.repository.AccessControlEntryRepository;
+import com.system559.cms.security.repository.AccessControlListRepository;
 import com.system559.cms.security.authorization.AccessControlService;
 import org.junit.Before;
 import org.junit.Test;
@@ -20,7 +20,7 @@ import java.util.Optional;
 public class AccessControlServiceTest {
     @Before
     public void setUp() {
-        repository = Mockito.mock(AccessControlEntryRepository.class);
+        repository = Mockito.mock(AccessControlListRepository.class);
         accessControlService = new AccessControlService(repository);
 
         AccessControlList testEntry =
@@ -33,7 +33,7 @@ public class AccessControlServiceTest {
 
     private AccessControlService accessControlService;
 
-    private AccessControlEntryRepository repository;
+    private AccessControlListRepository repository;
 
     private AccessControlList createTestEntry(String objectId, Map<String, EnumSet<Permission>> grantedPermissions) {
         AccessControlList newAccessControlList = new AccessControlList();
