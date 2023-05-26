@@ -3,27 +3,36 @@ package com.system559.cms.config;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.lang.NonNull;
-import com.mongodb.lang.NonNullApi;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.config.AbstractMongoClientConfiguration;
 
+/**
+ * MongoClient configuration bean
+ * @author James Osterhage
+ * @version 0.0.1
+ * @since 0.0.1
+ */
 @Configuration
 public class MongoConfig extends AbstractMongoClientConfiguration {
-    private final String DB_NAME = "cms";
-    private final Logger logger = LoggerFactory.getLogger(MongoConfig.class);
 
+    /**
+     * Returns the name of the database we're connecting to
+     * @return string containing the database name
+     */
     @Override
     @NonNull
     protected String getDatabaseName() {
-        return DB_NAME;
+        return "cms";
     }
 
+    /**
+     * Returns a new MongoClient
+     * @return new MongoClient instance
+     */
     @NonNull
-    public @Bean MongoClient mongoClient() {
-        logger.info(String.format("MongoUri: %s ", System.getenv("cmsMongoUri")));
+    @Bean
+    public MongoClient mongoClient() {
         return MongoClients.create(System.getenv("cmsMongoUri"));
     }
 }
