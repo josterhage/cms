@@ -1,44 +1,59 @@
 package com.system559.cms.model;
 
-import com.system559.cms.dto.NoteDto;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
-
+/**
+ * <p>
+ *     A {@link ManagedObject} that represents an abstraction of a "sticky note" or similar collaborative device. Notes
+ *     have a name/title and text that can be sanitized HyperText
+ * </p>
+ * @author James Osterhage
+ * @version 0.0.1
+ * @since 0.0.1
+ */
 public class Note extends ManagedObject {
+    /**
+     * The name of this note.
+     */
     private String name;
+    /**
+     * The text of this note.
+     */
     private String text;
 
+    /**
+     * Constructs an empty note
+     */
     public Note() {
     }
 
+    /**
+     * Returns the note's name
+     * @return the note's name
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Sets the note's name
+     * @param name the new name
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     * Returns the note's text
+     * @return the note's text
+     */
     public String getText() {
         return text;
     }
 
+    /**
+     * Sets the note's text
+     * @param text the new text
+     */
     public void setText(String text) {
         this.text = text;
-    }
-
-    public static Note createNote(String name, String text, List<String> managerIds) {
-        Note newNote = new Note();
-        newNote.id = UUID.randomUUID().toString();
-        newNote.name=name;
-        newNote.text=text;
-        newNote.managerIds = (managerIds != null) ? managerIds : new ArrayList<>();
-        return newNote;
-    }
-
-    public static Note createNoteFromDto(NoteDto dto) {
-        return createNote(dto.getName(),dto.getText(),dto.getManagerIds());
     }
 }
