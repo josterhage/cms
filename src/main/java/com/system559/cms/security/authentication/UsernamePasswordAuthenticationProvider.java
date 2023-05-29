@@ -147,7 +147,7 @@ public class UsernamePasswordAuthenticationProvider implements AuthenticationPro
 
         loginFailureRepository.save(failure);
 
-        if(failure.getCount() >= LoginFailure.getMaxFailures()) {
+        if(failure.getFailureCount() >= LoginFailure.getMaxFailures()) {
             accountLockRepository.save(new AccountLock(credential.getUserId()));
         }
 
