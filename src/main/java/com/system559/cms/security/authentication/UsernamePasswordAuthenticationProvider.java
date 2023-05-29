@@ -47,9 +47,9 @@ public class UsernamePasswordAuthenticationProvider implements AuthenticationPro
 
     /**
      * Only constructor, {@link Autowired} by the framework
-     * @param accountLockRepository framework-injected {@link AccountLockRepository instance}
-     * @param credentialRepository framework-injected {@link UsernamePasswordCredentialRepository instance}
-     * @param loginFailureRepository framework-injected {@link LoginFailureRepository instance}
+     * @param accountLockRepository framework-injected {@link AccountLockRepository} instance
+     * @param credentialRepository framework-injected {@link UsernamePasswordCredentialRepository} instance
+     * @param loginFailureRepository framework-injected {@link LoginFailureRepository} instance
      */
     @Autowired
     public UsernamePasswordAuthenticationProvider(AccountLockRepository accountLockRepository,
